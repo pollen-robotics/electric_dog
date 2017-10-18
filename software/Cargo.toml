@@ -1,0 +1,11 @@
+[package]
+name = "electric_dog"
+version = "0.1.0"
+authors = ["Pollen Robotics <contact@pollen-robotics.com>"]
+
+[dependencies]
+
+
+[dependencies.clippy]
+optional = true
+version = "0.0.165"
