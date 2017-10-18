@@ -5,6 +5,9 @@ authors = ["Pollen Robotics <contact@pollen-robotics.com>"]
 
 [dependencies]
 
+[dependencies.luos]
+git = "https://github.com/pollen/luos"
+branch = "mockup-hal"
 
 [dependencies.clippy]
 optional = true
