@@ -28,7 +28,7 @@ impl ElectricDog {
         ElectricDog {
             left_wheel: Wheel {},
             right_wheel: Wheel {},
-            steering: SteeringWheel {},
+            steering: SteeringWheel::new(gpio::Pin::P8),
             left_light: LightSensor::new(gpio::Pin::P12),
             right_light: LightSensor::new(gpio::Pin::P13),
             remote_control: RemoteControl::new(gpio::Pin::P9),
