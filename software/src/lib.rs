@@ -26,8 +26,8 @@ pub struct ElectricDog {
 impl ElectricDog {
     pub fn new() -> ElectricDog {
         ElectricDog {
-            left_wheel: Wheel {},
-            right_wheel: Wheel {},
+            left_wheel: Wheel::new(gpio::Pin::P1),
+            right_wheel: Wheel::new(gpio::Pin::P2),
             steering: SteeringWheel::new(gpio::Pin::P8),
             left_light: LightSensor::new(gpio::Pin::P12),
             right_light: LightSensor::new(gpio::Pin::P13),
