@@ -1,12 +1,12 @@
 use hal::gpio;
 
-pub struct RemoteControl {
+pub struct RemoteControlReceiver {
     pin: gpio::Pin,
 }
 
-impl RemoteControl {
-    pub fn new(pin: gpio::Pin) -> RemoteControl {
-        RemoteControl { pin }
+impl RemoteControlReceiver {
+    pub fn new(pin: gpio::Pin) -> RemoteControlReceiver {
+        RemoteControlReceiver { pin }
     }
     pub fn triggered(&self) -> bool {
         gpio::read(&self.pin)

@@ -7,7 +7,7 @@ fn main() {
     let mut electric_dog = ElectricDog::new();
 
     loop {
-        if electric_dog.remote_control.triggered() {
+        if electric_dog.remote_control_receiver.triggered() {
             match electric_dog.lights() {
                 Lights::Both => electric_dog.move_forward(),
                 Lights::Left => electric_dog.turn_left(),

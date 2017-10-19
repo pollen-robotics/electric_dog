@@ -8,7 +8,7 @@ pub mod module;
 use module::Wheel;
 use module::{Steering, SteeringWheel};
 use module::{LightSensor, Lights};
-use module::RemoteControl;
+use module::RemoteControlReceiver;
 
 
 pub struct ElectricDog {
@@ -20,7 +20,7 @@ pub struct ElectricDog {
     pub left_light: LightSensor,
     pub right_light: LightSensor,
 
-    pub remote_control: RemoteControl,
+    pub remote_control_receiver: RemoteControlReceiver,
 }
 
 impl ElectricDog {
@@ -31,7 +31,7 @@ impl ElectricDog {
             steering: SteeringWheel::new(gpio::Pin::P8),
             left_light: LightSensor::new(gpio::Pin::P12),
             right_light: LightSensor::new(gpio::Pin::P13),
-            remote_control: RemoteControl::new(gpio::Pin::P9),
+            remote_control_receiver: RemoteControlReceiver::new(gpio::Pin::P9),
         }
     }
 
