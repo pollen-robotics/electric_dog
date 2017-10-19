@@ -1,3 +1,4 @@
+use luos;
 use hal::{gpio, servo};
 
 /// Steering Wheel for Electric Dog
@@ -9,13 +10,17 @@ use hal::{gpio, servo};
 /// * turn right
 ///
 pub struct SteeringWheel {
+    name: &'static str,
     servo: servo::Servo,
 }
 
 impl SteeringWheel {
     /// Setup and attach to a `Pin` used for the Servo.
-    pub fn new(pin: gpio::Pin) -> SteeringWheel {
-        SteeringWheel { servo: servo::attach(pin) }
+    pub fn new(name: &'static str, pin: gpio::Pin) -> SteeringWheel {
+        SteeringWheel {
+            name,
+            servo: servo::attach(pin),
+        }
     }
     /// Set the Steering Wheel in one of the pre-defined position.
     pub fn set(&self, steering: &Steering) {
@@ -26,6 +31,12 @@ impl SteeringWheel {
         };
 
         self.servo.write(position);
+    }
+}
+
+impl luos::Module for SteeringWheel {
+    fn alias(&self) -> &'static str {
+        self.name
     }
 }
 

@@ -8,8 +8,8 @@ optional = true
 version = "0.0.165"
 
 [dependencies.luos]
-branch = "mockup-hal"
 git = "https://github.com/pollen/luos"
+branch = "button-led-demo"
 
 [dependencies.mockup_hal]
 git = "https://github.com/pollen/stm32-mockup-hal/"

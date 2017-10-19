@@ -1,3 +1,4 @@
+use luos;
 use hal::gpio;
 
 /// Light Sensor for Electric Dog
@@ -6,14 +7,16 @@ use hal::gpio;
 ///
 /// Those modules are responsible for detecting light (true/false). This will be used to make the robot move accordingly.
 pub struct LightSensor {
+    name: &'static str,
     pin: gpio::Pin,
     threshold: u16,
 }
 
 impl LightSensor {
     /// Initialize the LightSensor and attach it to a `Pin`.
-    pub fn new(pin: gpio::Pin) -> LightSensor {
+    pub fn new(name: &'static str, pin: gpio::Pin) -> LightSensor {
         LightSensor {
+            name,
             pin,
             threshold: 512,
         }
@@ -22,6 +25,12 @@ impl LightSensor {
     /// Detect if the light is above a predefined threshold.
     pub fn detect(&self) -> bool {
         gpio::analog_read::<u16>(&self.pin) > self.threshold
+    }
+}
+
+impl luos::Module for LightSensor {
+    fn alias(&self) -> &'static str {
+        self.name
     }
 }
 

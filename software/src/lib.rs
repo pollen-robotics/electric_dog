@@ -82,13 +82,32 @@ impl ElectricDog {
     /// ```
     ///
     pub fn new() -> ElectricDog {
+        let luos_core = luos::Core::new();
+
+        let left_wheel = Wheel::new("left_wheel", gpio::Pin::P1);
+        luos_core.register(&left_wheel);
+        let right_wheel = Wheel::new("right_wheel", gpio::Pin::P2);
+        luos_core.register(&right_wheel);
+
+        let steering = SteeringWheel::new("steering_wheel", gpio::Pin::P8);
+        luos_core.register(&steering);
+
+        let left_light = LightSensor::new("left_light", gpio::Pin::P12);
+        luos_core.register(&left_light);
+        let right_light = LightSensor::new("right_light", gpio::Pin::P13);
+        luos_core.register(&right_light);
+
+        let remote_control_receiver =
+            RemoteControlReceiver::new("remote_control_receiver", gpio::Pin::P9);
+        luos_core.register(&remote_control_receiver);
+
         ElectricDog {
-            left_wheel: Wheel::new(gpio::Pin::P1),
-            right_wheel: Wheel::new(gpio::Pin::P2),
-            steering: SteeringWheel::new(gpio::Pin::P8),
-            left_light: LightSensor::new(gpio::Pin::P12),
-            right_light: LightSensor::new(gpio::Pin::P13),
-            remote_control_receiver: RemoteControlReceiver::new(gpio::Pin::P9),
+            left_wheel,
+            right_wheel,
+            steering,
+            left_light,
+            right_light,
+            remote_control_receiver,
         }
     }
     /// Make the robot move forward.
