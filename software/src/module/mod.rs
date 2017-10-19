@@ -1,3 +1,5 @@
+//! Luos Module assets for Electric Dog
+
 mod light_sensor;
 pub use module::light_sensor::{LightSensor, Lights};
 
