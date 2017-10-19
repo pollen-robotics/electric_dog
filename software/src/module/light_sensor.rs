@@ -1,6 +1,6 @@
-pub struct Light {}
+pub struct LightSensor {}
 
-impl Light {
+impl LightSensor {
     pub fn detect(&self) -> bool {
         true
     }

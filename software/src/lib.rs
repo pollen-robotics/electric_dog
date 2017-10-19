@@ -4,7 +4,7 @@ pub mod module;
 
 use module::Wheel;
 use module::{Steering, SteeringWheel};
-use module::{Light, Lights};
+use module::{LightSensor, Lights};
 use module::RemoteControl;
 
 
@@ -14,8 +14,8 @@ pub struct ElectricDog {
 
     pub steering: SteeringWheel,
 
-    pub left_light: Light,
-    pub right_light: Light,
+    pub left_light: LightSensor,
+    pub right_light: LightSensor,
 
     pub remote_control: RemoteControl,
 }
@@ -26,8 +26,8 @@ impl ElectricDog {
             left_wheel: Wheel {},
             right_wheel: Wheel {},
             steering: SteeringWheel {},
-            left_light: Light {},
-            right_light: Light {},
+            left_light: LightSensor {},
+            right_light: LightSensor {},
             remote_control: RemoteControl {},
         }
     }

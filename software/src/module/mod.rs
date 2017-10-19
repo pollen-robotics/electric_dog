@@ -1,5 +1,5 @@
-mod light;
-pub use module::light::{Light, Lights};
+mod light_sensor;
+pub use module::light_sensor::{LightSensor, Lights};
 
 mod remote_control;
 pub use module::remote_control::RemoteControl;
