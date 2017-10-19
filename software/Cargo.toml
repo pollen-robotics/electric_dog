@@ -1,14 +1,15 @@
 [package]
+authors = ["Pollen Robotics <contact@pollen-robotics.com>"]
 name = "electric_dog"
 version = "0.1.0"
-authors = ["Pollen Robotics <contact@pollen-robotics.com>"]
-
-[dependencies]
-
-[dependencies.luos]
-git = "https://github.com/pollen/luos"
-branch = "mockup-hal"
 
 [dependencies.clippy]
 optional = true
 version = "0.0.165"
+
+[dependencies.luos]
+branch = "mockup-hal"
+git = "https://github.com/pollen/luos"
+
+[dependencies.mockup_hal]
+git = "https://github.com/pollen/stm32-mockup-hal/"

@@ -1,5 +1,8 @@
 extern crate luos;
 
+extern crate mockup_hal as hal;
+use hal::gpio;
+
 pub mod module;
 
 use module::Wheel;
@@ -26,8 +29,8 @@ impl ElectricDog {
             left_wheel: Wheel {},
             right_wheel: Wheel {},
             steering: SteeringWheel {},
-            left_light: LightSensor {},
-            right_light: LightSensor {},
+            left_light: LightSensor::new(gpio::Pin::P12),
+            right_light: LightSensor::new(gpio::Pin::P13),
             remote_control: RemoteControl {},
         }
     }
