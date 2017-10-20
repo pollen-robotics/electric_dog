@@ -5,11 +5,10 @@ version = "0.1.0"
 
 [dependencies.clippy]
 optional = true
-version = "0.0.165"
+version = "*"
 
 [dependencies.luos]
-git = "https://github.com/pollen/luos"
-branch = "button-led-demo"
+path = "../luos"
 
 [dependencies.mockup_hal]
 git = "https://github.com/pollen/stm32-mockup-hal/"

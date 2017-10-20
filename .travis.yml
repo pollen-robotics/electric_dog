@@ -11,16 +11,26 @@ addons:
       - binutils-arm-none-eabi
 
 env:
+  matrix:
   - TARGET=x86_64-unknown-linux-gnu
-  - TARGET=thumbv6m-none-eabi
+  global:
+    secure: lWeXzE2x1iBgGLHvKkTA2+NhgnSljdGRmpdVUNKZcVLq/COlNe7oAXyh4hLGfBKr7iA0a7s1u0ftG9GydZ7VCRoBaH24sKeh5A5cmiFUbLIHJhnmnqtOCWtjVhuNNwoYASE/0A8HFsS+rj4+VP58mBDxtPCjfJ+1h7O4DNnwNWHQOU0ieWYgiynITgAcc/+BAxWbbICsF3X3xICHY9sJ3C9K2m7aA7Ph+2JMw+MFXZK2afDu4r1uphXKRH98+iiNDGzyK6vbUg7zQq1Kbt7H4BMZwDgpFrH0s6AOWUV8wmg8hW2VLPoyLl+NJRgR0ZE7q3X0tarotFRNq97+0VGMxccgtQWV8+QMDYUxeGmatywWXYgjN32s0fR5iV4U6XoOPyQ/lxo4vhUd6VRi8PKb3FVXSt0eO+W8bkJscR3sKVOiXfkrF2662dfWZM98Q4vzC1VXbIgq+chAyMgLYh1NfNeDFd4fCKOegaP/SkDmV83uBGMOz8x0bkn1U2bN0N5P51CQ4a7isK1J2LkbICyBxZTXRAshgzR9dZOLt4YL0Qfo9JCQjqfClzF/U9EN16jwszqJYy2MeubxdFuinHQUaVLwjxxA4RLQBvwUgwH4oOmjE2LaDgMntDhqZPoN9Hqw05c6mJGIS6itDq8BHfdNNNspT4ZsSUk+xUAovrtd0j0=
+
+before_install:
+  - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
+  - git clone https://github.com/pollen/luos --branch button-led-demo
 
 before_script:
+  - set -e
   - export PATH="$PATH:$HOME/.cargo/bin"
   - which xargo || cargo install xargo -f --vers 0.3.8
   - rustup component list | grep 'rust-src.*installed' || rustup component add rust-src
   - which rustfmt || cargo install rustfmt
 
 script:
-  - bash software/ci/build.sh
-  - bash software/ci/test.sh
-  - bash software/ci/lint.sh
+  - . ./software/ci/build.sh
+  - . ./software/ci/test.sh
+  - . ./software/ci/lint.sh
+
+after_script:
+  - set +e
