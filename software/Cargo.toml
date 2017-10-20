@@ -5,7 +5,7 @@ version = "0.1.0"
 
 [dependencies.clippy]
 optional = true
-version = "0.0.165"
+version = "*"
 
 [dependencies.luos]
 path = "../luos"
