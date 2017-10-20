@@ -22,6 +22,7 @@ before_install:
   - git clone https://github.com/pollen/luos --branch button-led-demo
 
 before_script:
+  - set -e
   - export PATH="$PATH:$HOME/.cargo/bin"
   - which xargo || cargo install xargo -f --vers 0.3.8
   - rustup component list | grep 'rust-src.*installed' || rustup component add rust-src
@@ -31,3 +32,6 @@ script:
   - bash software/ci/build.sh
   - bash software/ci/test.sh
   - bash software/ci/lint.sh
+
+after_script:
+  - set +e
