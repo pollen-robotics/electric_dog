@@ -68,6 +68,8 @@ pub struct ElectricDog {
     pub right_light: LightSensor,
 
     pub remote_control_receiver: RemoteControlReceiver,
+
+    pub current_move: Move,
 }
 
 impl ElectricDog {
@@ -108,6 +110,7 @@ impl ElectricDog {
             left_light,
             right_light,
             remote_control_receiver,
+            current_move: Move::None,
         }
     }
     /// Make the robot move forward.
@@ -135,6 +138,7 @@ impl ElectricDog {
     pub fn stop(&mut self) {
         self.left_wheel.off();
         self.right_wheel.off();
+        self.current_move = Move::None;
     }
 
     fn _move(&mut self, steering: &Steering) {
@@ -142,6 +146,12 @@ impl ElectricDog {
         self.right_wheel.on();
 
         self.steering.set(steering);
+
+        self.current_move = match *steering {
+            Steering::Center => Move::Forward,
+            Steering::Left => Move::Left,
+            Steering::Right => Move::Right,
+        };
     }
 
     /// Give the light sensor status.
@@ -178,4 +188,13 @@ impl ElectricDog {
             (false, false) => Lights::None,
         }
     }
+}
+
+/// Possible move of Electric Dog
+#[derive(Debug)]
+pub enum Move {
+    Left,
+    Right,
+    Forward,
+    None,
 }
