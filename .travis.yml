@@ -29,9 +29,9 @@ before_script:
   - which rustfmt || cargo install rustfmt
 
 script:
-  - bash software/ci/build.sh
-  - bash software/ci/test.sh
-  - bash software/ci/lint.sh
+  - . ./software/ci/build.sh
+  - . ./software/ci/test.sh
+  - . ./software/ci/lint.sh
 
 after_script:
   - set +e
