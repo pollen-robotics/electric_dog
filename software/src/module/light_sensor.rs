@@ -9,7 +9,7 @@ use hal::gpio;
 pub struct LightSensor {
     name: &'static str,
     pin: gpio::Pin,
-    threshold: u16,
+    threshold: u8,
 }
 
 impl LightSensor {
@@ -18,13 +18,13 @@ impl LightSensor {
         LightSensor {
             name,
             pin,
-            threshold: 512,
+            threshold: 127,
         }
     }
 
     /// Detect if the light is above a predefined threshold.
     pub fn detect(&self) -> bool {
-        gpio::analog_read::<u16>(&self.pin) > self.threshold
+        gpio::analog_read::<u8>(&self.pin) > self.threshold
     }
 }
 
@@ -35,6 +35,7 @@ impl luos::Module for LightSensor {
 }
 
 /// Light detection possibility for Electric Dog
+#[derive(Debug)]
 pub enum Lights {
     None,
     Left,

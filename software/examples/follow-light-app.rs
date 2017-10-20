@@ -1,0 +1,17 @@
+extern crate electric_dog;
+
+use electric_dog::ElectricDog;
+
+use electric_dog::app::{App, FollowLight, Logger};
+
+fn main() {
+    let mut electric_dog = ElectricDog::new();
+
+    let mut logger = Logger::new();
+    let mut follow_light = FollowLight::new();
+
+    loop {
+        follow_light.update(&mut electric_dog);
+        logger.update(&mut electric_dog);
+    }
+}

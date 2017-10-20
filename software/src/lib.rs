@@ -25,6 +25,7 @@ extern crate mockup_hal as hal;
 use hal::gpio;
 
 pub mod module;
+pub mod app;
 
 use module::Wheel;
 use module::{Steering, SteeringWheel};
