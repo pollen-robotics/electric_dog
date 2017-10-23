@@ -10,5 +10,9 @@ version = "*"
 [dependencies.luos]
 path = "../luos"
 
-[dependencies.mockup_hal]
+[target.'cfg(not(target_arch = "arm"))'.dependencies.mockup_hal]
 git = "https://github.com/pollen/stm32-mockup-hal/"
+
+[target.'cfg(target_arch = "arm")'.dependencies.stm32f0_hal]
+git = "https://github.com/pollen/stm32f0/"
+branch = "clean-gpio-adc"

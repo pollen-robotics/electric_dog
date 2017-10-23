@@ -10,11 +10,7 @@ impl Logger {
 }
 
 impl App for Logger {
-    fn update(&mut self, dog: &mut ElectricDog) {
-        println!(
-            "Detected lights: {:?} Moving: {:?}",
-            dog.lights(),
-            dog.current_move
-        );
+    fn update(&mut self, _dog: &mut ElectricDog) {
+        // Log new state somewhere...
     }
 }

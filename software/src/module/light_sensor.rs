@@ -9,7 +9,7 @@ use hal::adc;
 pub struct LightSensor {
     name: &'static str,
     pin: adc::Input,
-    threshold: u8,
+    threshold: u16,
 }
 
 impl LightSensor {
@@ -24,7 +24,8 @@ impl LightSensor {
 
     /// Detect if the light is above a predefined threshold.
     pub fn detect(&self) -> bool {
-        self.pin.read::<u8>() > self.threshold
+        let v: u16 = self.pin.read();
+        v > self.threshold
     }
 }
 

@@ -19,9 +19,15 @@
 //! * If only one of them detects light, the robot will turn towards the light.
 //! * And if the robot doesn't detect light, it will stop.
 
+#![no_std]
+
 extern crate luos;
 
+#[cfg(target_arch = "arm")]
+extern crate stm32f0_hal as hal;
+#[cfg(not(target_arch = "arm"))]
 extern crate mockup_hal as hal;
+
 use hal::{gpio, adc};
 
 pub mod module;
