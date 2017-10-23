@@ -1,5 +1,5 @@
 use luos;
-use hal::gpio;
+use hal::adc;
 
 /// Light Sensor for Electric Dog
 ///
@@ -8,23 +8,23 @@ use hal::gpio;
 /// Those modules are responsible for detecting light (true/false). This will be used to make the robot move accordingly.
 pub struct LightSensor {
     name: &'static str,
-    pin: gpio::Pin,
+    pin: adc::Input,
     threshold: u8,
 }
 
 impl LightSensor {
     /// Initialize the LightSensor and attach it to a `Pin`.
-    pub fn new(name: &'static str, pin: gpio::Pin) -> LightSensor {
+    pub fn new(name: &'static str, pin: adc::Pin) -> LightSensor {
         LightSensor {
             name,
-            pin,
+            pin: adc::Input::setup(pin),
             threshold: 127,
         }
     }
 
     /// Detect if the light is above a predefined threshold.
     pub fn detect(&self) -> bool {
-        gpio::analog_read::<u8>(&self.pin) > self.threshold
+        self.pin.read::<u8>() > self.threshold
     }
 }
 

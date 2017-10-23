@@ -9,17 +9,20 @@ use hal::gpio;
 ///
 pub struct RemoteControlReceiver {
     name: &'static str,
-    pin: gpio::Pin,
+    pin: gpio::Input,
 }
 
 impl RemoteControlReceiver {
     /// Setup and attach the Remote Control Receiver to a `Pin`
     pub fn new(name: &'static str, pin: gpio::Pin) -> RemoteControlReceiver {
-        RemoteControlReceiver { name, pin }
+        RemoteControlReceiver {
+            name,
+            pin: gpio::Input::setup(pin),
+        }
     }
     /// Check if the Remote Control is triggered
     pub fn triggered(&self) -> bool {
-        gpio::read(&self.pin)
+        self.pin.read()
     }
 }
 

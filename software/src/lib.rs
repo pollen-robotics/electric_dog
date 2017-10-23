@@ -22,7 +22,7 @@
 extern crate luos;
 
 extern crate mockup_hal as hal;
-use hal::gpio;
+use hal::{gpio, adc};
 
 pub mod module;
 pub mod app;
@@ -87,21 +87,21 @@ impl ElectricDog {
     pub fn new() -> ElectricDog {
         let luos_core = luos::Core::new();
 
-        let left_wheel = Wheel::new("left_wheel", gpio::Pin::P1);
+        let left_wheel = Wheel::new("left_wheel", gpio::Pin::P8);
         luos_core.register(&left_wheel);
-        let right_wheel = Wheel::new("right_wheel", gpio::Pin::P2);
+        let right_wheel = Wheel::new("right_wheel", gpio::Pin::P9);
         luos_core.register(&right_wheel);
 
         let steering = SteeringWheel::new("steering_wheel", gpio::Pin::P8);
         luos_core.register(&steering);
 
-        let left_light = LightSensor::new("left_light", gpio::Pin::P12);
+        let left_light = LightSensor::new("left_light", adc::Pin::P4);
         luos_core.register(&left_light);
-        let right_light = LightSensor::new("right_light", gpio::Pin::P13);
+        let right_light = LightSensor::new("right_light", adc::Pin::P5);
         luos_core.register(&right_light);
 
         let remote_control_receiver =
-            RemoteControlReceiver::new("remote_control_receiver", gpio::Pin::P9);
+            RemoteControlReceiver::new("remote_control_receiver", gpio::Pin::P10);
         luos_core.register(&remote_control_receiver);
 
         ElectricDog {
