@@ -11,3 +11,6 @@ pub use module::steering::{Steering, SteeringWheel};
 
 mod wheel;
 pub use module::wheel::Wheel;
+
+mod app_selector;
+pub use module::app_selector::{AppSelector, AppSelectorPosition};
