@@ -82,7 +82,7 @@ pub struct ElectricDog {
 impl ElectricDog {
     /// Instantiate and setup the robot.
     ///
-    /// It creates and setup all modules. It connect each module to its dedicated pin.
+    /// It creates and setup all modules. It connects each module to its dedicated pin.
     ///
     /// ## Examples
     ///
@@ -98,6 +98,7 @@ impl ElectricDog {
         let right_wheel = Wheel::new("right_wheel", gpio::Pin::P9);
         luos_core.register(&right_wheel);
 
+        // FIXME: P8 is already used!
         let steering = SteeringWheel::new("steering_wheel", gpio::Pin::P8);
         luos_core.register(&steering);
 
@@ -161,7 +162,7 @@ impl ElectricDog {
         };
     }
 
-    /// Give the light sensor status.
+    /// Give the light sensors status.
     ///
     /// It can be:
     ///
