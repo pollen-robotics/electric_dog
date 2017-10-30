@@ -5,6 +5,6 @@ pushd software
     cargo build --features "clippy" --examples
 
   elif [ $TARGET = thumbv6m-none-eabi ]; then
-    xargo build --features "clippy" --target $TARGET
+    xargo build --features "clippy" --target $TARGET --examples
   fi
 popd

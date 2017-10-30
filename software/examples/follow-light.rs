@@ -1,3 +1,15 @@
+#![feature(used)]
+#![no_std]
+
+#[cfg(target_arch = "arm")]
+extern crate cortex_m_semihosting;
+#[cfg(target_arch = "arm")]
+extern crate cortex_m_rt;
+#[cfg(target_arch = "arm")]
+extern crate cortex_m;
+#[cfg(target_arch = "arm")]
+use cortex_m::asm;
+
 extern crate electric_dog;
 
 use electric_dog::ElectricDog;
