@@ -2,6 +2,7 @@
 authors = ["Pollen Robotics <contact@pollen-robotics.com>"]
 name = "electric_dog"
 version = "0.1.0"
+publish = false
 
 [target."cfg(target_arch = \"arm\")".dependencies]
 cortex-m = "0.3.1"
