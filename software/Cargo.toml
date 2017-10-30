@@ -21,4 +21,3 @@ git = "https://github.com/pollen/stm32-mockup-hal/"
 
 [target.'cfg(target_arch = "arm")'.dependencies.stm32f0_hal]
 git = "https://github.com/pollen/stm32f0/"
-branch = "pwm"
