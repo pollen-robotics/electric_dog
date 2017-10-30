@@ -93,18 +93,17 @@ impl ElectricDog {
     pub fn new() -> ElectricDog {
         let luos_core = luos::Core::new();
 
-        let left_wheel = Wheel::new("left_wheel", gpio::Pin::P8);
+        let left_wheel = Wheel::new("left_wheel", gpio::Pin::PA1);
         luos_core.register(&left_wheel);
-        let right_wheel = Wheel::new("right_wheel", gpio::Pin::P9);
+        let right_wheel = Wheel::new("right_wheel", gpio::Pin::PA5);
         luos_core.register(&right_wheel);
 
-        // FIXME: P8 is already used!
-        let steering = SteeringWheel::new("steering_wheel", gpio::Pin::P8);
+        let steering = SteeringWheel::new("steering_wheel");
         luos_core.register(&steering);
 
-        let left_light = LightSensor::new("left_light", adc::Pin::P4);
+        let left_light = LightSensor::new("left_light", adc::Pin::P3);
         luos_core.register(&left_light);
-        let right_light = LightSensor::new("right_light", adc::Pin::P5);
+        let right_light = LightSensor::new("right_light", adc::Pin::P4);
         luos_core.register(&right_light);
 
         let remote_control_receiver =

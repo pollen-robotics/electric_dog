@@ -18,7 +18,7 @@ impl LightSensor {
         LightSensor {
             name,
             pin: adc::Input::setup(pin),
-            threshold: 127,
+            threshold: 3900,
         }
     }
 
@@ -26,6 +26,10 @@ impl LightSensor {
     pub fn detect(&self) -> bool {
         let v: u16 = self.pin.read();
         v > self.threshold
+    }
+
+    pub fn get(&self) -> u16 {
+        self.pin.read()
     }
 }
 
