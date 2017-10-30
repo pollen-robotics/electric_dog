@@ -2,8 +2,6 @@
 #![no_std]
 
 #[cfg(target_arch = "arm")]
-extern crate cortex_m_semihosting;
-#[cfg(target_arch = "arm")]
 extern crate cortex_m_rt;
 #[cfg(target_arch = "arm")]
 extern crate cortex_m;
