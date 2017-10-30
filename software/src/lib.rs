@@ -36,7 +36,6 @@ pub mod app;
 use module::Wheel;
 use module::{Steering, SteeringWheel};
 use module::{LightSensor, Lights};
-use module::RemoteControlReceiver;
 
 /// ElectricDog struct representing the whole robot.
 ///
@@ -74,8 +73,6 @@ pub struct ElectricDog {
     pub left_light: LightSensor,
     pub right_light: LightSensor,
 
-    pub remote_control_receiver: RemoteControlReceiver,
-
     pub current_move: Move,
 }
 
@@ -106,17 +103,12 @@ impl ElectricDog {
         let right_light = LightSensor::new("right_light", adc::Pin::P4);
         luos_core.register(&right_light);
 
-        let remote_control_receiver =
-            RemoteControlReceiver::new("remote_control_receiver", gpio::Pin::P10);
-        luos_core.register(&remote_control_receiver);
-
         ElectricDog {
             left_wheel,
             right_wheel,
             steering,
             left_light,
             right_light,
-            remote_control_receiver,
             current_move: Move::None,
         }
     }
