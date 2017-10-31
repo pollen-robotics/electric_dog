@@ -18,7 +18,7 @@ impl LightSensor {
         LightSensor {
             name,
             pin: adc::Input::setup(pin),
-            threshold: 3900,
+            threshold: 3000,
         }
     }
 
