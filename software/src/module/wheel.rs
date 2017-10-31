@@ -13,7 +13,7 @@ impl Wheel {
         Wheel {
             name,
             pin: gpio::Output::setup(pin),
-         }
+        }
     }
 
     /// Make the wheel turn (using the pre-defined speed)
