@@ -25,9 +25,9 @@ impl SteeringWheel {
     /// Set the Steering Wheel in one of the pre-defined position.
     pub fn set(&self, steering: &Steering) {
         let duty = match *steering {
+            Steering::Right => 250,
             Steering::Center => 500,
-            Steering::Left => 250,
-            Steering::Right => 750,
+            Steering::Left => 750,
         };
         pwm::set_duty(duty);
     }
